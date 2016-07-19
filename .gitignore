@@ -1,0 +1,5 @@
+aspnetcore-docker/.vscode/
+aspnetcore-docker/bin/
+aspnetcore-docker/obj/
+aspnetcore-docker/project.lock.json
+Site/

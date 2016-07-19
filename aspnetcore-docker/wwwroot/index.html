@@ -1,0 +1,40 @@
+﻿<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.0.0.js"></script> 
+    <title>ASP.NET Core test under Docker</title>
+
+    <script>
+        function postOneThing() {
+            var numberString = "",
+                numbers = [],
+                i;
+            for (i = 0; i < 20000; i++) {
+                numbers.push(i % 10);
+            }
+
+
+            $.post("/Home/PostAction/", {
+                data: numbers.join("")
+            }).then(function success(result) {
+                result = result.substr(5, result.length)
+
+                var i;
+                var checkResult = "OK";
+                for (i = 0; i < result.length; i++) {
+                    var digit = i%10;
+                    if (result[i] !== digit.toString()) {
+                        checkResult = "Failed!!!!";
+                    }
+                }
+
+                alert(checkResult + "\n" + result);
+            })
+        }
+    </script>
+</head>
+<body>
+    Hello, world!
+
+    <button onclick="postOneThing()" title="123">Post to Server</button>
+</body>
+</html>
