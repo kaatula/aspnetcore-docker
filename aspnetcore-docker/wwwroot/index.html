@@ -30,11 +30,40 @@
                 alert(checkResult + "\n" + result);
             })
         }
+
+        function postWithParam() {
+            var numberString = "",
+                numbers = [],
+                i;
+            for (i = 0; i < 20000; i++) {
+                numbers.push(i % 10);
+            }
+
+
+            $.post("/Home/PostActionWithParameter/", {
+                data: numbers.join("")
+            }).then(function success(result) {
+                var i;
+                var checkResult = "OK";
+                for (i = 0; i < result.length; i++) {
+                    var digit = i % 10;
+                    if (result[i] !== digit.toString()) {
+                        checkResult = "Failed!!!!";
+                    }
+                }
+
+                alert(checkResult + "\n" + result);
+            })
+        }
     </script>
 </head>
 <body>
     Hello, world!
-
-    <button onclick="postOneThing()" title="123">Post to Server</button>
+    <div>
+        <button onclick="postOneThing()">Post to Server (Request.Body)</button>
+    </div>
+    <div>
+        <button onclick="postWithParam()">Post to Server (Action parameter)</button>
+    </div>    
 </body>
 </html>

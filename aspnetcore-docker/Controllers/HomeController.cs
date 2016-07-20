@@ -15,6 +15,10 @@ namespace aspnetcore_docker.Controllers {
             Console.WriteLine(result);
             return Content(result);
         }
+        public IActionResult PostActionWithParameter(string data) {
+            Console.WriteLine(data);
+            return Content(data);
+        }
         public IActionResult Error() {
             return View();
         }
